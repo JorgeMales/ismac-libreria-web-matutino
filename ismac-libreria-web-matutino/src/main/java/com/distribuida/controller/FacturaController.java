@@ -39,7 +39,7 @@ public class FacturaController {
 	@GetMapping("/findAll")
 	public String findAll(ModelMap modelMap) {
 		modelMap.addAttribute("facturas", facturaDAO.findAll());
-		return "Listar-facturas";
+		return "listar-facturas";
 		
 		
 	}
@@ -51,7 +51,7 @@ public class FacturaController {
 		
 		modelMap.addAttribute("factura", facturaDAO.findOne(idFactura));
 		
-		return "Listar-facturas";
+		return "listar-facturas";
 		
 		
 	}

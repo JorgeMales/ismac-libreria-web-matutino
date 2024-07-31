@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,11 +28,12 @@ public class LibroController {
 	@Autowired
 	private CategoriaDAO categoriaDAO;
 	
-	//@Autowired
-	//private AutorDAO autorDAO;
+	@Autowired
+	@Qualifier("autorDAOImpl2")
+	private AutorDAO autorDAO;
 	
-	@GetMapping("/finAll")
-	private String finAll(ModelMap modelMap) {
+	@GetMapping("/findAll")
+	private String findAll(ModelMap modelMap) {
 		
 		List<Libro> libros = libroDAO.findAll();
 		modelMap.addAttribute("libros",libros);

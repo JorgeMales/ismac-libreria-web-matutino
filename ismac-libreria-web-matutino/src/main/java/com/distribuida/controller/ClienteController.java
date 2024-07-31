@@ -24,24 +24,24 @@ public class ClienteController {
 	private ClienteDAO clienteDAO;
 	
 	@GetMapping("/findAll")      // path secundario
-	public String finAll(Model  model) {
+	public String findAll(Model  model) {
 		
 		//try {
 			
 			List<Cliente> clientes = clienteDAO.findAll();
-			model.addAttribute("keyClientes",clientes);    //EJ : Clave = KeyClientes , valor = clientes
+			model.addAttribute("clientes",clientes);    //EJ : Clave = KeyClientes , valor = clientes
 			
 			
 			return "listar-clientes";  //nombre del formulario EJ.listar-clientes.html o listar-clientes.jsp
 			
 //		} catch (Exception e) {
-//			// TODO: handle exception
+	// TODO: handle exception
 //			e.printStackTrace();
 //	   }
 	}
 	
 	
-	@GetMapping("/finOne")
+	@GetMapping("/findOne")
 	public String findOne(@RequestParam("idCliente")@Nullable Integer idCliente
 			             ,@RequestParam("opcion")@Nullable Integer opcion
 			             ,Model model
@@ -57,7 +57,7 @@ public class ClienteController {
 			else return "del-clientes";             //Eliminación
 			
 	//	} catch (Exception e) {
-	//		// TODO: handle exception
+		// TODO: handle exception
 	//	}
 		
 		
@@ -80,11 +80,11 @@ public class ClienteController {
 				clienteDAO.add(cliente);
 				
 			}else {
-				Cliente cliente2 = new Cliente(idCliente, cedula, nombre, apellido, direccion, telefono, correo);
-				clienteDAO.up(cliente2);
+				Cliente cliente = new Cliente(idCliente, cedula, nombre, apellido, direccion, telefono, correo);
+				clienteDAO.up(cliente);
 			
 	//	} catch (Exception e) {
-	//		// TODO: handle exception
+		// TODO: handle exception
 	//	}
 		
 		
@@ -104,7 +104,7 @@ public class ClienteController {
 			return "redirect:/clientes/findAll";
 			
 	//	} catch (Exception e) {
-	//		// TODO: handle exception
+			// TODO: handle exception
 	//	}
 		
 
