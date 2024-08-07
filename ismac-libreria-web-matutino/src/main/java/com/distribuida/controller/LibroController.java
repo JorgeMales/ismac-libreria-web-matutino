@@ -38,7 +38,7 @@ public class LibroController {
 		List<Libro> libros = libroDAO.findAll();
 		modelMap.addAttribute("libros",libros);
 		
-		return "listar-libros";
+		return "libros-listar";
 	}
 	
 	@GetMapping("/findOne")
@@ -71,7 +71,7 @@ public class LibroController {
 			       ,@RequestParam ("fechaPublicacion") @Nullable Date fechaPublicacion
 			       ,@RequestParam ("descripcion") @Nullable String descripcion
 			       ,@RequestParam ("tipoPasta") @Nullable String tipoPasta
-			       ,@RequestParam ("isbn") @Nullable String isbn
+			       ,@RequestParam ("ISBN") @Nullable String ISBN
 			       ,@RequestParam ("numEjemplares") @Nullable Integer numEjemplares
 			       ,@RequestParam ("portada") @Nullable String portada
 			       ,@RequestParam ("presentacion") @Nullable String presentacion
@@ -82,23 +82,23 @@ public class LibroController {
 			) {
 		
 		if (idLibro == null) {
-			Libro libro = new Libro(0,titulo,editorial,numPaginas,edicion,idioma,fechaPublicacion,descripcion,tipoPasta,isbn,numEjemplares,portada,presentacion,precio);
+			Libro libro = new Libro(0,titulo,editorial,numPaginas,edicion,idioma,fechaPublicacion,descripcion,tipoPasta,ISBN,numEjemplares,portada,presentacion,precio);
 			libro.setCategoria(categoriaDAO.findOne(id_categoria));
-			//libro.setAutor(autorDAO.findOne(id_autor));
+			libro.setAutor(autorDAO.findOne(id_autor));
 			
 			libroDAO.add(libro);	
 			
 		}else {
 			
-			Libro libro = new Libro(idLibro,titulo,editorial,numPaginas,edicion,idioma,fechaPublicacion,descripcion,tipoPasta,isbn,numEjemplares,portada,presentacion,precio);
+			Libro libro = new Libro(idLibro,titulo,editorial,numPaginas,edicion,idioma,fechaPublicacion,descripcion,tipoPasta,ISBN,numEjemplares,portada,presentacion,precio);
 			libro.setCategoria(categoriaDAO.findOne(id_categoria));
-			//libro.setAutor(autorDAO.findOne(id_autor));
+			libro.setAutor(autorDAO.findOne(id_autor));
 			
 			libroDAO.up(libro);
 			
 		}
 		
-		return "redirect:/libros/listar-libros";
+		return "redirect:/libros/libros-listar";
 		
 	}
 	

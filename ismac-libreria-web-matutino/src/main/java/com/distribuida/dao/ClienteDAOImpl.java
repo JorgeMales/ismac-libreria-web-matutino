@@ -25,7 +25,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 		return session.createQuery("from Cliente",Cliente.class).getResultList();
 		
 	}
-	
+
 
 	@Override
 	@Transactional 

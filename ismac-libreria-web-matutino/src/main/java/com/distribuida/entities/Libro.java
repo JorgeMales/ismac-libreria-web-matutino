@@ -39,7 +39,7 @@ public class Libro {
 	@Column(name = "tipo_pasta")
 	private String tipoPasta;
 	@Column(name = "ISBN")
-	private String isbn;
+	private String ISBN;
 	@Column(name = "num_ejemplares")
 	private int numEjemplares;
 	@Column(name = "portada")
@@ -62,7 +62,7 @@ public class Libro {
 	//Contructor
 	
 	public Libro(int idLibro, String titulo, String editorial, int numPaginas, String edicion, String idioma,
-			Date fechaPublicacion, String descripcion, String tipoPasta, String isbn, int numEjemplares, String portada,
+			Date fechaPublicacion, String descripcion, String tipoPasta, String ISBN, int numEjemplares, String portada,
 			String presentacion, double precio) {
 		
 		this.idLibro = idLibro;
@@ -74,7 +74,7 @@ public class Libro {
 		this.fechaPublicacion = fechaPublicacion;
 		this.descripcion = descripcion;
 		this.tipoPasta = tipoPasta;
-		this.isbn = isbn;
+		this.ISBN = ISBN;
 		this.numEjemplares = numEjemplares;
 		this.portada = portada;
 		this.presentacion = presentacion;
@@ -155,12 +155,12 @@ public class Libro {
 		this.tipoPasta = tipoPasta;
 	}
 
-	public String getIsbn() {
-		return isbn;
+	public String getISBN() {
+		return ISBN;
 	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setISBN(String ISBN) {
+		this.ISBN = ISBN;
 	}
 
 	public int getNumEjemplares() {
@@ -216,7 +216,7 @@ public class Libro {
 	public String toString() {
 		return "Libro [idLibro=" + idLibro + ", titulo=" + titulo + ", editorial=" + editorial + ", numPaginas="
 				+ numPaginas + ", edicion=" + edicion + ", idioma=" + idioma + ", fechaPublicacion=" + fechaPublicacion
-				+ ", descripcion=" + descripcion + ", tipoPasta=" + tipoPasta + ", isbn=" + isbn + ", numEjemplares="
+				+ ", descripcion=" + descripcion + ", tipoPasta=" + tipoPasta + ", ISBN=" + ISBN + ", numEjemplares="
 				+ numEjemplares + ", portada=" + portada + ", presentacion=" + presentacion + ", precio=" + precio
 				+ ", categoria=" + categoria + ", autor=" + autor + "]";
 	}
