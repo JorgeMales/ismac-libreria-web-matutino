@@ -189,7 +189,8 @@ public class Libro {
 
 	public void setPresentacion(String presentacion) {
 		this.presentacion = presentacion;
-	}
+	}  
+	
 
 	public double getPrecio() {
 		return precio;
