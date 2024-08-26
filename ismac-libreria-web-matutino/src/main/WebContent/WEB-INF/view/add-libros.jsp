@@ -19,7 +19,7 @@
 
    <div class="container">
    
-   <form action="add" method="post" class="neded-validation" novalidate>
+   <form action="add" method="post" class="needs-validation" novalidate>
           
      
           <input type="hidden" id="idLibro" name="idLibro" value="${libro.idLibro }">
@@ -37,7 +37,7 @@
           
           <div class="form-group">
           <label for="numPaginas" class="form-label">Número de Paginas</label>
-          <input class="form-control" type="number" id="numPaginas" name="numPaginas" value="${libro.numPaginas}" >
+          <input class="form-control" type="number" id="numPaginas" name="numPaginas" value="${libro.numPaginas}" required>
           </div>
           
           
@@ -49,12 +49,12 @@
           
           <div class="form-group">
           <label for="idioma" class="form-label">Idioma</label>
-          <input class="form-control" type="text" id="idioma" name="idioma" value="${libro.idioma}" >
+          <input class="form-control" type="text" id="idioma" name="idioma" value="${libro.idioma}" required>
           </div>
          
           <div class="form-group">
           <label for="fechaPublicacion" class="form-label">Fecha de Publicación</label>
-          <input class="form-control" type="date" id="fechaPublicacion" name="fechaPublicacion" value="${libro.fechaPublicacion}" >
+          <input class="form-control" type="date" id="fechaPublicacion" name="fechaPublicacion" value="${libro.fechaPublicacion}" required>
           </div>
           
           <div class="form-group">
@@ -64,17 +64,17 @@
           
           <div class="form-group">
           <label for="tipoPasta" class="form-label">Tipo de Pasta</label>
-          <input class="form-control" type="text" id="tipoPasta" name="tipoPasta" value="${libro.tipoPasta}" >
+          <input class="form-control" type="text" id="tipoPasta" name="tipoPasta" value="${libro.tipoPasta}" required>
           </div>
           
           <div class="form-group">
           <label for="ISBN" class="form-label">ISBN</label>
-          <input class="form-control" type="text" id="ISBN" name="ISBN" value="${libro.ISBN}" >
+          <input class="form-control" type="text" id="ISBN" name="ISBN" value="${libro.ISBN}" required>
           </div>
           
           <div class="form-group">
           <label for="numEjemplares" class="form-label">Número de Ejemplares</label>
-          <input class="form-control" type="number" id="numEjemplares" name="numEjemplares" value="${libro.numEjemplares}" >
+          <input class="form-control" type="number" id="numEjemplares" name="numEjemplares" value="${libro.numEjemplares}" required>
           </div>
           
           <div class="form-group">
@@ -84,7 +84,7 @@
          
           <div class="form-group">
           <label for="presentacion" class="form-label">Presentación</label>
-          <input class="form-control" type="text" id="presentacion" name="presentacion" value="${libro.presentacion}" >
+          <input class="form-control" type="text" id="presentacion" name="presentacion" value="${libro.presentacion}" required>
           </div>
           
           <div class="form-group">
@@ -94,7 +94,7 @@
           
           <div class="form-group">
           <label for="categoria" class="form-label">Categoria</label>
-          <select class="form-select" id="idCategoria" name ="idCategoria">                
+          <select class="form-select" id="idCategoria" name ="idCategoria" required>                
                 <c:forEach var="item" items="${categorias}">
                 <option value="${item.idCategoria}" ${item.idCategoria == libro.categoria.idCategoria ? 'selected' : '' } > ${item.categoria}</option> 
                 </c:forEach>
@@ -103,7 +103,7 @@
           
           <div class="form-group">
           <label for="autor" class="form-label">Autor</label>
-         <select class="form-select" id="idAutor" name ="idAutor">
+         <select class="form-select" id="idAutor" name ="idAutor" required>
                 <c:forEach var="item" items="${autores}">
                 <option value="${item.idAutor}" ${item.idAutor == libro.autor.idAutor ? 'selected' : '' } > ${item.nombre} ${item.apellido} </option> 
 
@@ -131,16 +131,36 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap-table.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap-table-es-MX.min.js"></script>
 	
-	<script type="text/javascript">
-		
-		var $tabla1 = $('#tabla1')
-		
-		$(function(){
-				$tabla1.bootstrapTable({ sortReset: true })
-		 }				
-		)
 	
-	</script>	
+	
+	
+	<script>
+	    /* Example starter JavaScript for disablig   */
+	    
+	    (() => {
+	    	'use strict'
+	    	
+	    	// Fetch all the forms we wat 
+	    	const forms = document.querySelectorAll('.needs-validation')
+	    	
+	    	// Loop over them and prevent submission
+	    	Array.from(forms).forEach(form =>{
+	    		form.addEventListener('submit', event =>{
+	    			if(!form.checkValidity()) {
+	    				event.preventDefault()
+	    				event.stopPropagation()
+	    			}
+	    			
+	    			form.classList.add('was-validated')
+	    		}, false)
+	    				
+	    		
+	    	 })
+	    	 
+	   })()
+	    		
+	
+	</script>
 
 </body>
 </html>
